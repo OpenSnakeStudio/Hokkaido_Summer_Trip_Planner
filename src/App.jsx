@@ -7,49 +7,77 @@ const itineraryData = [
     date: "07/07 Tue.",
     title: "抵達．北國之門",
     spots: ["新千歲機場入境與取車手續", "機場國內線商店街採買零食", "道央自動車道：岩見澤休息站", "旭川市區：大雪地啤酒館午餐", "AEON Mall 旭川站前店採買", "入住旭川精品商旅", "成吉思汗大黑屋烤肉晚餐"],
-    photos: ["https://images.unsplash.com/photo-1579965342575-16428a7c8d71?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=300"]
+    photos: [
+      "https://images.unsplash.com/photo-1627885233682-965a7776dd09?auto=format&fit=crop&q=80&w=300", // New Chitose Airport / Plane
+      "https://images.unsplash.com/photo-1578322692015-c266858e38c9?auto=format&fit=crop&q=80&w=300", // Ramen / Food
+      "https://images.unsplash.com/photo-1632344795745-779870be8440?auto=format&fit=crop&q=80&w=300"  // Jingisukan (Genghis Khan BBQ style)
+    ]
   },
   {
     day: 2,
     date: "07/08 Wed.",
     title: "動物園與拼布花海",
     spots: ["旭山動物園：企鵝與海豹館", "旭川拉麵村：午餐時光", "美瑛：北西之丘展望公園", "拼布之路：七星之樹與親子之樹", "亞斗夢之丘：自駕賞花點", "Ken & Mary 之樹攝影", "入住美瑛森林系民宿"],
-    photos: ["https://images.unsplash.com/photo-1534057357022-386df2789647?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1490750967868-58cb75069ed6?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=300"]
+    photos: [
+      "https://images.unsplash.com/photo-1534057357022-386df2789647?auto=format&fit=crop&q=80&w=300", // Penguin/Zoo
+      "https://images.unsplash.com/photo-1520627708304-7667bf95a5f7?auto=format&fit=crop&q=80&w=300", // Biei Patchwork Road
+      "https://plus.unsplash.com/premium_photo-1661962363406-33a755d5764d?auto=format&fit=crop&q=80&w=300"  // Biei Tree
+    ]
   },
   {
     day: 3,
     date: "07/09 Thu.",
     title: "青池幻境與四季彩",
     spots: ["十勝岳望岳台展望站", "白金瀑布：感受藍色溪流", "白金青池：晨間靜謐攝影", "四季彩之丘：搭乘遊覽牽引車", "拓真館：美瑛風景攝影展", "美瑛選果：在地農產品採買", "純平炸蝦飯 (需提早排隊)"],
-    photos: ["https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=300"]
+    photos: [
+      "https://images.unsplash.com/photo-1549117652-3ba7925e0a6d?auto=format&fit=crop&q=80&w=300", // Blue Pond (Aoiike) - Style
+      "https://images.unsplash.com/photo-1559846660-d790757b07db?auto=format&fit=crop&q=80&w=300", // Flower field (Four Seasons Hill)
+      "https://images.unsplash.com/photo-1695431627914-7227d894e3a3?auto=format&fit=crop&q=80&w=300"  // Biei scenery
+    ]
   },
   {
     day: 4,
     date: "07/10 Fri.",
     title: "薰衣草花道制霸",
     spots: ["富田農場：五彩花田與哈密瓜", "薰衣草東站：搭乘賞花吊椅", "中富良野：北星山町營花園", "森之時計咖啡館：磨咖啡豆體驗", "富良野起司工房：手工冰淇淋", "精靈露台：夜晚點燈漫步", "入住富良野溫泉飯店"],
-    photos: ["https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=300"]
+    photos: [
+      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=300", // Lavender Field close up
+      "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=300", // Furano Flower Field
+      "https://images.unsplash.com/photo-1605333246714-bb44383c5098?auto=format&fit=crop&q=80&w=300"  // Melon / Food
+    ]
   },
   {
     day: 5,
     date: "07/11 Sat.",
     title: "森林公路與札幌",
     spots: ["富良野果醬園：採買自製果醬", "麵包超人專門店 (伴手禮)", "桂澤湖景觀自駕公路", "札幌市區：大通公園電視塔", "狸小路商店街：藥妝最後補貨", "藻岩山纜車：欣賞百萬夜景", "札幌必吃：湯咖哩名店之旅"],
-    photos: ["https://images.unsplash.com/photo-1515276427842-f85802d514a2?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1579202673506-ca3ce28f52f3?auto=format&fit=crop&q=80&w=300"]
+    photos: [
+      "https://images.unsplash.com/photo-1533050487659-3286576d4993?auto=format&fit=crop&q=80&w=300", // Sapporo TV Tower
+      "https://images.unsplash.com/photo-1557409518-691ebcd96038?auto=format&fit=crop&q=80&w=300", // Sapporo Street/Night
+      "https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?auto=format&fit=crop&q=80&w=300"  // Soup Curry
+    ]
   },
   {
     day: 6,
     date: "07/12 Sun.",
     title: "浪漫小樽時光",
     spots: ["小樽運河：歷史建築漫步", "北一硝子三號館：煤氣燈咖啡", "堺町通：LeTAO 總店甜點巡禮", "小樽音樂盒堂：欣賞報時鳴奏", "天狗山纜車：眺望海港落日", "政壽司：品嚐新鮮海港味", "運河沿岸居酒屋小酌"],
-    photos: ["https://images.unsplash.com/photo-1589454170884-257c7cb17c24?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1542931287-023b922fa89b?auto=format&fit=crop&q=80&w=300"]
+    photos: [
+      "https://images.unsplash.com/photo-1542931287-023b922fa89b?auto=format&fit=crop&q=80&w=300", // Otaru Canal
+      "https://images.unsplash.com/photo-1629707253503-455cb3b8ae86?auto=format&fit=crop&q=80&w=300", // Glass / Music Box style
+      "https://images.unsplash.com/photo-1555529733-0e670560f7e1?auto=format&fit=crop&q=80&w=300"  // Sushi
+    ]
   },
   {
     day: 7,
     date: "07/13 Mon.",
     title: "最終採買與歸途",
     spots: ["二條市場：海鮮丼早餐", "北海道大學：銀杏林散策", "三井 Outlet Park 札幌北廣島", "機場還車中心：歸還租賃車", "新千歲機場國內線：Royce 巧克力", "機場美食區：最後一碗拉麵", "平安登機，告別北海道"],
-    photos: ["https://images.unsplash.com/photo-1551316679-5c6dbe873526?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&q=80&w=300"]
+    photos: [
+      "https://images.unsplash.com/photo-1651586716075-840822608404?auto=format&fit=crop&q=80&w=300", // Seafood Rice Bowl (Kaisendon)
+      "https://images.unsplash.com/photo-1589454170889-q439348981d3?auto=format&fit=crop&q=80&w=300", // Soft serve / Hokkaido treats
+      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=300"  // Airplane wing / leaving
+    ]
   }
 ];
 
@@ -160,8 +188,8 @@ function App() {
       <main className="w-full max-w-md px-4">
         <section className="mb-20 bg-stone-200/20 p-6 rounded-[40px] border border-white/50 backdrop-blur-sm shadow-inner">
           <div className="flex flex-col gap-2 bg-stone-200/40 p-2 rounded-[28px] mb-8">
-            <button className={`py-4 rounded-2xl font-bold transition-all ${currentPlan === 'A' ? 'bg-white text-wa-purple shadow-md' : 'text-stone-400'}`} onClick={() => setCurrentPlan('A')}>PLAN A 精華</button>
-            <button className={`py-4 rounded-2xl font-bold transition-all ${currentPlan === 'B' ? 'bg-white text-wa-purple shadow-md' : 'text-stone-400'}`} onClick={() => setCurrentPlan('B')}>PLAN B 慢賞</button>
+            <button className={`py - 4 rounded - 2xl font - bold transition - all ${currentPlan === 'A' ? 'bg-white text-wa-purple shadow-md' : 'text-stone-400'} `} onClick={() => setCurrentPlan('A')}>PLAN A 精華</button>
+            <button className={`py - 4 rounded - 2xl font - bold transition - all ${currentPlan === 'B' ? 'bg-white text-wa-purple shadow-md' : 'text-stone-400'} `} onClick={() => setCurrentPlan('B')}>PLAN B 慢賞</button>
           </div>
           <div className="space-y-12">
             <div>
@@ -181,7 +209,7 @@ function App() {
 
         <section id="itinerary" className="relative pt-10">
           <div className="timeline-path"></div>
-          <div id="scrolling-car" style={{ top: `${carPos}px`, transform: `rotate(${carRotation}deg)` }}>🚗</div>
+          <div id="scrolling-car" style={{ top: `${carPos} px`, transform: `rotate(${carRotation}deg)` }}>🚗</div>
 
           <div className="flex flex-col gap-[40vh]">
             {itineraryData.map((item, idx) => (
@@ -217,19 +245,19 @@ function App() {
                   </div>
 
                   {item.spots.map((spot, sIdx) => {
-                    const spotId = `${item.day}-${sIdx}`;
+                    const spotId = `${item.day} -${sIdx} `;
                     const isChecked = checkedItems[spotId];
                     return (
                       <div key={sIdx}
                         className="flex items-start gap-4 cursor-pointer group"
                         onClick={() => toggleCheck(spotId)}
                       >
-                        <div className={`relative w-6 h-6 shrink-0 mt-1 border-2 rounded-full flex items-center justify-center transition-colors ${isChecked ? 'border-red-400' : 'border-stone-300'}`}>
+                        <div className={`relative w - 6 h - 6 shrink - 0 mt - 1 border - 2 rounded - full flex items - center justify - center transition - colors ${isChecked ? 'border-red-400' : 'border-stone-300'} `}>
                           {isChecked && (
                             <span className="text-red-500 font-serif-jp font-bold text-xs stamp-animation">済</span>
                           )}
                         </div>
-                        <span className={`text-lg font-handwriting transition-colors leading-relaxed ${isChecked ? 'text-stone-300 line-through decoration-stone-300' : 'text-stone-600 group-hover:text-wa-purple'}`}>
+                        <span className={`text - lg font - handwriting transition - colors leading - relaxed ${isChecked ? 'text-stone-300 line-through decoration-stone-300' : 'text-stone-600 group-hover:text-wa-purple'} `}>
                           {spot}
                         </span>
                       </div>
