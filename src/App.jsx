@@ -2,23 +2,71 @@ import React, { useState, useEffect } from 'react';
 import { ComparisonRadar, BloomLine } from './components/JournalCharts';
 
 const itineraryData = [
-  { day: 1, date: "07/07 Tue.", title: "抵達．北國之門", spots: ["新千歲機場入境與取車手續", "機場國內線商店街採買零食", "道央自動車道：岩見澤休息站", "旭川市區：大雪地啤酒館午餐", "AEON Mall 旭川站前店採買", "入住旭川精品商旅", "成吉思汗大黑屋烤肉晚餐"] },
-  { day: 2, date: "07/08 Wed.", title: "動物園與拼布花海", spots: ["旭山動物園：企鵝與海豹館", "旭川拉麵村：午餐時光", "美瑛：北西之丘展望公園", "拼布之路：七星之樹與親子之樹", "亞斗夢之丘：自駕賞花點", "Ken & Mary 之樹攝影", "入住美瑛森林系民宿"] },
-  { day: 3, date: "07/09 Thu.", title: "青池幻境與四季彩", spots: ["十勝岳望岳台展望站", "白金瀑布：感受藍色溪流", "白金青池：晨間靜謐攝影", "四季彩之丘：搭乘遊覽牽引車", "拓真館：美瑛風景攝影展", "美瑛選果：在地農產品採買", "純平炸蝦飯 (需提早排隊)"] },
-  { day: 4, date: "07/10 Fri.", title: "薰衣草花道制霸", spots: ["富田農場：五彩花田與哈密瓜", "薰衣草東站：搭乘賞花吊椅", "中富良野：北星山町營花園", "森之時計咖啡館：磨咖啡豆體驗", "富良野起司工房：手工冰淇淋", "精靈露台：夜晚點燈漫步", "入住富良野溫泉飯店"] },
-  { day: 5, date: "07/11 Sat.", title: "森林公路與札幌", spots: ["富良野果醬園：採買自製果醬", "麵包超人專門店 (伴手禮)", "桂澤湖景觀自駕公路", "札幌市區：大通公園電視塔", "狸小路商店街：藥妝最後補貨", "藻岩山纜車：欣賞百萬夜景", "札幌必吃：湯咖哩名店之旅"] },
-  { day: 6, date: "07/12 Sun.", title: "浪漫小樽時光", spots: ["小樽運河：歷史建築漫步", "北一硝子三號館：煤氣燈咖啡", "堺町通：LeTAO 總店甜點巡禮", "小樽音樂盒堂：欣賞報時鳴奏", "天狗山纜車：眺望海港落日", "政壽司：品嚐新鮮海港味", "運河沿岸居酒屋小酌"] },
-  { day: 7, date: "07/13 Mon.", title: "最終採買與歸途", spots: ["二條市場：海鮮丼早餐", "北海道大學：銀杏林散策", "三井 Outlet Park 札幌北廣島", "機場還車中心：歸還租賃車", "新千歲機場國內線：Royce 巧克力", "機場美食區：最後一碗拉麵", "平安登機，告別北海道"] }
+  {
+    day: 1,
+    date: "07/07 Tue.",
+    title: "抵達．北國之門",
+    spots: ["新千歲機場入境與取車手續", "機場國內線商店街採買零食", "道央自動車道：岩見澤休息站", "旭川市區：大雪地啤酒館午餐", "AEON Mall 旭川站前店採買", "入住旭川精品商旅", "成吉思汗大黑屋烤肉晚餐"],
+    photos: ["https://images.unsplash.com/photo-1579965342575-16428a7c8d71?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=300"]
+  },
+  {
+    day: 2,
+    date: "07/08 Wed.",
+    title: "動物園與拼布花海",
+    spots: ["旭山動物園：企鵝與海豹館", "旭川拉麵村：午餐時光", "美瑛：北西之丘展望公園", "拼布之路：七星之樹與親子之樹", "亞斗夢之丘：自駕賞花點", "Ken & Mary 之樹攝影", "入住美瑛森林系民宿"],
+    photos: ["https://images.unsplash.com/photo-1534057357022-386df2789647?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1490750967868-58cb75069ed6?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=300"]
+  },
+  {
+    day: 3,
+    date: "07/09 Thu.",
+    title: "青池幻境與四季彩",
+    spots: ["十勝岳望岳台展望站", "白金瀑布：感受藍色溪流", "白金青池：晨間靜謐攝影", "四季彩之丘：搭乘遊覽牽引車", "拓真館：美瑛風景攝影展", "美瑛選果：在地農產品採買", "純平炸蝦飯 (需提早排隊)"],
+    photos: ["https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=300"]
+  },
+  {
+    day: 4,
+    date: "07/10 Fri.",
+    title: "薰衣草花道制霸",
+    spots: ["富田農場：五彩花田與哈密瓜", "薰衣草東站：搭乘賞花吊椅", "中富良野：北星山町營花園", "森之時計咖啡館：磨咖啡豆體驗", "富良野起司工房：手工冰淇淋", "精靈露台：夜晚點燈漫步", "入住富良野溫泉飯店"],
+    photos: ["https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=300"]
+  },
+  {
+    day: 5,
+    date: "07/11 Sat.",
+    title: "森林公路與札幌",
+    spots: ["富良野果醬園：採買自製果醬", "麵包超人專門店 (伴手禮)", "桂澤湖景觀自駕公路", "札幌市區：大通公園電視塔", "狸小路商店街：藥妝最後補貨", "藻岩山纜車：欣賞百萬夜景", "札幌必吃：湯咖哩名店之旅"],
+    photos: ["https://images.unsplash.com/photo-1515276427842-f85802d514a2?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1579202673506-ca3ce28f52f3?auto=format&fit=crop&q=80&w=300"]
+  },
+  {
+    day: 6,
+    date: "07/12 Sun.",
+    title: "浪漫小樽時光",
+    spots: ["小樽運河：歷史建築漫步", "北一硝子三號館：煤氣燈咖啡", "堺町通：LeTAO 總店甜點巡禮", "小樽音樂盒堂：欣賞報時鳴奏", "天狗山纜車：眺望海港落日", "政壽司：品嚐新鮮海港味", "運河沿岸居酒屋小酌"],
+    photos: ["https://images.unsplash.com/photo-1589454170884-257c7cb17c24?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1542931287-023b922fa89b?auto=format&fit=crop&q=80&w=300"]
+  },
+  {
+    day: 7,
+    date: "07/13 Mon.",
+    title: "最終採買與歸途",
+    spots: ["二條市場：海鮮丼早餐", "北海道大學：銀杏林散策", "三井 Outlet Park 札幌北廣島", "機場還車中心：歸還租賃車", "新千歲機場國內線：Royce 巧克力", "機場美食區：最後一碗拉麵", "平安登機，告別北海道"],
+    photos: ["https://images.unsplash.com/photo-1551316679-5c6dbe873526?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&q=80&w=300"]
+  }
 ];
 
 function App() {
   const [currentPlan, setCurrentPlan] = useState('A');
   const [carPos, setCarPos] = useState(0);
   const [carRotation, setCarRotation] = useState(0);
+  const [checkedItems, setCheckedItems] = useState({});
+
+  const toggleCheck = (id) => {
+    setCheckedItems(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
   const [weather, setWeather] = useState({ temp: '--', condition: 'Loading' });
   const [exchangeRate, setExchangeRate] = useState('--');
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = React.useRef(null);
 
   useEffect(() => {
     // Fetch Weather (Sapporo)
@@ -54,36 +102,9 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMusic = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
 
   return (
     <div className="selection:bg-purple-100 min-h-screen flex flex-col items-center pb-32">
-      {/* Background Music */}
-      <audio ref={audioRef} loop>
-        <source src="https://cdn.pixabay.com/audio/2022/05/13/audio_257112e87f.mp3" type="audio/mpeg" />
-      </audio>
-
-      {/* Music Control Button */}
-      <button
-        onClick={toggleMusic}
-        className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm shadow-lg border border-purple-200 flex items-center justify-center hover:scale-110 transition-transform"
-        aria-label="Toggle music"
-      >
-        {isPlaying ? (
-          <span className="text-2xl">🎵</span>
-        ) : (
-          <span className="text-2xl opacity-50">🎵</span>
-        )}
-      </button>
       <nav className="w-full p-6 flex justify-between items-center max-w-4xl">
         <div className="border-b-4 border-stone-800 pb-1">
           <h1 className="text-base font-bold tracking-[0.4em] font-serif-jp uppercase text-stone-800">Hokkaido '26</h1>
@@ -166,26 +187,54 @@ function App() {
             {itineraryData.map((item, idx) => (
               <div key={idx} className="wa-card p-8">
                 <div className="washi-tape"></div>
-                <div className="flex justify-between items-start mb-8">
-                  <div className="w-16 h-16 rounded-full border border-wa-purple/20 flex flex-col items-center justify-center text-wa-purple bg-white shadow-sm -rotate-6">
+                <div className="flex justify-between items-start mb-8 relative">
+                  {/* Vertical Japanese Label */}
+                  <div className="absolute -left-2 top-0 writing-vertical-rl text-xs font-serif-jp text-stone-300 tracking-widest opacity-60">
+                    第{item.day}日
+                  </div>
+
+                  <div className="w-16 h-16 rounded-full border border-white/50 backdrop-blur-md flex flex-col items-center justify-center text-wa-purple bg-white/30 shadow-sm -rotate-6 ml-6">
                     <span className="text-[10px] opacity-40 font-bold">DAY</span>
-                    <span className="text-2xl font-black">{idx + 1}</span>
+                    <span className="text-2xl font-black">{item.day}</span>
                   </div>
                   <div className="text-right">
-                    <p className="text-[10px] font-black tracking-widest text-stone-300 uppercase">SCHEDULE</p>
+                    <p className="text-[10px] font-black tracking-widest text-stone-300 uppercase mb-1">SCHEDULE</p>
                     <p className="text-md font-serif-jp text-stone-400 font-bold">{item.date}</p>
                   </div>
                 </div>
                 <h3 className="text-2xl font-serif-jp font-bold mb-10 border-l-4 border-wa-purple/20 pl-4">{item.title}</h3>
                 <div className="flex flex-col gap-6">
-                  {item.spots.map((spot, sIdx) => (
-                    <label key={sIdx} className="flex items-start gap-4 cursor-pointer group">
-                      <input type="checkbox" className="wa-checkbox mt-1 shrink-0" />
-                      <span className="text-lg font-handwriting text-stone-600 group-hover:text-wa-purple transition-colors leading-relaxed">
-                        {spot}
-                      </span>
-                    </label>
-                  ))}
+                  {/* Photo Carousel (Polaroid Style) */}
+                  <div className="flex gap-4 overflow-x-auto pb-4 snap-x pl-2">
+                    {item.photos.map((photo, pIdx) => (
+                      <div key={pIdx} className="snap-center shrink-0 w-40 h-52 bg-white p-2 shadow-sm rotate-1 first:-rotate-2 last:rotate-2 border border-gray-100">
+                        <div className="w-full h-40 bg-gray-100 overflow-hidden mb-2">
+                          <img src={photo} alt="travel memory" className="w-full h-full object-cover" loading="lazy" />
+                        </div>
+                        <div className="text-[8px] text-center font-handwriting text-stone-400">Memory {pIdx + 1}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {item.spots.map((spot, sIdx) => {
+                    const spotId = `${item.day}-${sIdx}`;
+                    const isChecked = checkedItems[spotId];
+                    return (
+                      <div key={sIdx}
+                        className="flex items-start gap-4 cursor-pointer group"
+                        onClick={() => toggleCheck(spotId)}
+                      >
+                        <div className={`relative w-6 h-6 shrink-0 mt-1 border-2 rounded-full flex items-center justify-center transition-colors ${isChecked ? 'border-red-400' : 'border-stone-300'}`}>
+                          {isChecked && (
+                            <span className="text-red-500 font-serif-jp font-bold text-xs stamp-animation">済</span>
+                          )}
+                        </div>
+                        <span className={`text-lg font-handwriting transition-colors leading-relaxed ${isChecked ? 'text-stone-300 line-through decoration-stone-300' : 'text-stone-600 group-hover:text-wa-purple'}`}>
+                          {spot}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ))}
