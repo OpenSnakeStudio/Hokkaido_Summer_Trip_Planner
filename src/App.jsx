@@ -8,9 +8,9 @@ const itineraryData = [
     title: "抵達．北國之門",
     spots: ["新千歲機場入境與取車手續", "機場國內線商店街採買零食", "道央自動車道：岩見澤休息站", "旭川市區：大雪地啤酒館午餐", "AEON Mall 旭川站前店採買", "入住旭川精品商旅", "成吉思汗大黑屋烤肉晚餐"],
     photos: [
-      "https://images.unsplash.com/photo-1627885233682-965a7776dd09?auto=format&fit=crop&q=80&w=300", // New Chitose Airport / Plane
-      "https://images.unsplash.com/photo-1578322692015-c266858e38c9?auto=format&fit=crop&q=80&w=300", // Ramen / Food
-      "https://images.unsplash.com/photo-1632344795745-779870be8440?auto=format&fit=crop&q=80&w=300"  // Jingisukan (Genghis Khan BBQ style)
+      "https://images.unsplash.com/photo-1674725690428-948af1d7f5a1?auto=format&fit=crop&q=80&w=300", // New Chitose Airport / Plane
+      "https://images.unsplash.com/photo-1614563637806-1d0e645e0940?auto=format&fit=crop&q=80&w=300", // Ramen / Food
+      "https://images.unsplash.com/photo-1704135489566-3929fc2a4fec?auto=format&fit=crop&q=80&w=300"  // Jingisukan (Genghis Khan BBQ style)
     ]
   },
   {
@@ -19,9 +19,9 @@ const itineraryData = [
     title: "動物園與拼布花海",
     spots: ["旭山動物園：企鵝與海豹館", "旭川拉麵村：午餐時光", "美瑛：北西之丘展望公園", "拼布之路：七星之樹與親子之樹", "亞斗夢之丘：自駕賞花點", "Ken & Mary 之樹攝影", "入住美瑛森林系民宿"],
     photos: [
-      "https://images.unsplash.com/photo-1534057357022-386df2789647?auto=format&fit=crop&q=80&w=300", // Penguin/Zoo
-      "https://images.unsplash.com/photo-1520627708304-7667bf95a5f7?auto=format&fit=crop&q=80&w=300", // Biei Patchwork Road
-      "https://plus.unsplash.com/premium_photo-1661962363406-33a755d5764d?auto=format&fit=crop&q=80&w=300"  // Biei Tree
+      "https://images.unsplash.com/photo-1631848351521-c99aed909530?auto=format&fit=crop&q=80&w=300", // Penguin/Zoo
+      "https://images.unsplash.com/photo-1722482445722-19c5c4989ec6?auto=format&fit=crop&q=80&w=300", // Biei Patchwork Road
+      "https://images.unsplash.com/photo-1659656066247-053c5150dea5?auto=format&fit=crop&q=80&w=300"  // Biei Tree
     ]
   },
   {
@@ -30,9 +30,9 @@ const itineraryData = [
     title: "青池幻境與四季彩",
     spots: ["十勝岳望岳台展望站", "白金瀑布：感受藍色溪流", "白金青池：晨間靜謐攝影", "四季彩之丘：搭乘遊覽牽引車", "拓真館：美瑛風景攝影展", "美瑛選果：在地農產品採買", "純平炸蝦飯 (需提早排隊)"],
     photos: [
-      "https://images.unsplash.com/photo-1549117652-3ba7925e0a6d?auto=format&fit=crop&q=80&w=300", // Blue Pond (Aoiike) - Style
-      "https://images.unsplash.com/photo-1559846660-d790757b07db?auto=format&fit=crop&q=80&w=300", // Flower field (Four Seasons Hill)
-      "https://images.unsplash.com/photo-1695431627914-7227d894e3a3?auto=format&fit=crop&q=80&w=300"  // Biei scenery
+      "https://images.unsplash.com/photo-1687784529277-3d3709faec5e?auto=format&fit=crop&q=80&w=300", // Blue Pond (Aoiike) - Style
+      "https://images.unsplash.com/photo-1757140093290-3ff3d53d9b85?auto=format&fit=crop&q=80&w=300", // Flower field (Four Seasons Hill)
+      "https://images.unsplash.com/photo-1722482445722-19c5c4989ec6?auto=format&fit=crop&q=80&w=300"  // Biei scenery
     ]
   },
   {
@@ -43,7 +43,7 @@ const itineraryData = [
     photos: [
       "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=300", // Lavender Field close up
       "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=300", // Furano Flower Field
-      "https://images.unsplash.com/photo-1605333246714-bb44383c5098?auto=format&fit=crop&q=80&w=300"  // Melon / Food
+      "https://images.unsplash.com/photo-1596677352741-0d3d0431c123?auto=format&fit=crop&q=80&w=300"  // Melon / Food
     ]
   },
   {
@@ -52,7 +52,7 @@ const itineraryData = [
     title: "森林公路與札幌",
     spots: ["富良野果醬園：採買自製果醬", "麵包超人專門店 (伴手禮)", "桂澤湖景觀自駕公路", "札幌市區：大通公園電視塔", "狸小路商店街：藥妝最後補貨", "藻岩山纜車：欣賞百萬夜景", "札幌必吃：湯咖哩名店之旅"],
     photos: [
-      "https://images.unsplash.com/photo-1533050487659-3286576d4993?auto=format&fit=crop&q=80&w=300", // Sapporo TV Tower
+      "https://images.unsplash.com/photo-1645611539916-e9b328d3832c?auto=format&fit=crop&q=80&w=300", // Sapporo TV Tower
       "https://images.unsplash.com/photo-1557409518-691ebcd96038?auto=format&fit=crop&q=80&w=300", // Sapporo Street/Night
       "https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?auto=format&fit=crop&q=80&w=300"  // Soup Curry
     ]
@@ -64,7 +64,7 @@ const itineraryData = [
     spots: ["小樽運河：歷史建築漫步", "北一硝子三號館：煤氣燈咖啡", "堺町通：LeTAO 總店甜點巡禮", "小樽音樂盒堂：欣賞報時鳴奏", "天狗山纜車：眺望海港落日", "政壽司：品嚐新鮮海港味", "運河沿岸居酒屋小酌"],
     photos: [
       "https://images.unsplash.com/photo-1542931287-023b922fa89b?auto=format&fit=crop&q=80&w=300", // Otaru Canal
-      "https://images.unsplash.com/photo-1629707253503-455cb3b8ae86?auto=format&fit=crop&q=80&w=300", // Glass / Music Box style
+      "https://images.unsplash.com/photo-1696677049468-73fb9c6aea2b?auto=format&fit=crop&q=80&w=300", // Glass / Music Box style
       "https://images.unsplash.com/photo-1555529733-0e670560f7e1?auto=format&fit=crop&q=80&w=300"  // Sushi
     ]
   },
@@ -74,8 +74,8 @@ const itineraryData = [
     title: "最終採買與歸途",
     spots: ["二條市場：海鮮丼早餐", "北海道大學：銀杏林散策", "三井 Outlet Park 札幌北廣島", "機場還車中心：歸還租賃車", "新千歲機場國內線：Royce 巧克力", "機場美食區：最後一碗拉麵", "平安登機，告別北海道"],
     photos: [
-      "https://images.unsplash.com/photo-1651586716075-840822608404?auto=format&fit=crop&q=80&w=300", // Seafood Rice Bowl (Kaisendon)
-      "https://images.unsplash.com/photo-1589454170889-q439348981d3?auto=format&fit=crop&q=80&w=300", // Soft serve / Hokkaido treats
+      "https://images.unsplash.com/photo-1575253301299-db3f10d814dd?auto=format&fit=crop&q=80&w=300", // Seafood Rice Bowl (Kaisendon)
+      "https://images.unsplash.com/photo-1535924571710-4c6e27716b6d?auto=format&fit=crop&q=80&w=300", // Soft serve / Hokkaido treats
       "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=300"  // Airplane wing / leaving
     ]
   }
