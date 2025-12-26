@@ -58,7 +58,7 @@
 
 ## 📸 操作預覽
 
-![操作錄影](docs/images/interaction_v2.webp)
+![Operation Preview](docs/images/interaction.webp)
 
 ---
 *專為 2026 年夏季的紫色北海道之旅精心設計。❤️*
