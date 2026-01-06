@@ -50,7 +50,7 @@ const itineraryData = [
     date: "07/13 Mon.",
     title: "機場最後巡禮與返台",
     spots: ["OTS 千歲營業所還車 (附近加滿油)", "機場 2 樓名產甜點最後採買", "機場 3 樓哆啦 A 夢與 Hello Kitty 樂園", "機場還車與登機返台"],
-    photos: ["https://images.unsplash.com/photo-1575253301299-db3f10d814dd?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=300"]
+    photos: ["/images/day7/new_chitose_airport.png", "/images/day7/airport_souvenirs.jpg"]
   }
 ];
 
