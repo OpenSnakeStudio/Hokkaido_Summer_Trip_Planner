@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// Deploy trigger: 2026-01-06 21:50
 import { ComparisonRadar, BloomLine } from './components/JournalCharts';
 
 const itineraryData = [
