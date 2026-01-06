@@ -8,7 +8,7 @@ const itineraryData = [
     date: "07/07 Tue.",
     title: "抵達與札幌購物夜",
     spots: ["抵達新千歲機場入境與領行李", "搭乘 OTS 接駁車領取 7 人座 (推薦 Noah/Voxy)", "加購 HEP 高速公路通行證", "貍小路商店街補齊藥妝與零食", "晚餐：湯咖哩或成吉思汗烤肉"],
-    photos: ["https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1555529733-0e670560f7e1?auto=format&fit=crop&q=80&w=300"]
+    photos: ["/images/day1/ots_rental.png", "/images/day1/tanukikoji.jpg", "/images/day1/soup_curry.jpg"]
   },
   {
     day: 2,
