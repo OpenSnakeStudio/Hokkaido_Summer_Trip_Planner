@@ -29,7 +29,7 @@ const itineraryData = [
     date: "07/10 Fri.",
     title: "美瑛與富良野：花季最高峰",
     spots: ["四季彩之丘 (搭乘七彩遊園車)", "青池與白鬚瀑布靜謐攝影", "富田農場：欣賞滿開薰衣草", "森林精靈露台：夜晚點燈漫步", "入住新富良野王子大飯店"],
-    photos: ["https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=300", "https://images.unsplash.com/photo-1583333222624-9b6574a38340?auto=format&fit=crop&q=80&w=300"]
+    photos: ["/images/day4/shikisai_no_oka.jpg", "/images/day4/blue_pond.jpg", "/images/day4/tomita_farm.jpg", "/images/day4/ningle_terrace.jpg"]
   },
   {
     day: 5,
