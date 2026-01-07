@@ -66,7 +66,7 @@ const itineraryData = [
   {
     day: 5,
     date: "07/11 Sat.",
-    title: "登別溫泉與水樂園止放電",
+    title: "登別溫泉與水樂園大放電",
     focus: "足湯、地獄谷、溫泉水樂園",
     timeline: [
       { time: "10:30", label: "出發", activity: "慢享早餐後開往登別（約 2.5 小時）。" },
