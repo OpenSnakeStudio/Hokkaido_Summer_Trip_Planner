@@ -7,67 +7,113 @@ const itineraryData = [
     day: 1,
     date: "07/07 Tue.",
     title: "抵達與札幌購物夜",
-    spots: ["抵達新千歲機場入境與領行李", "搭乘 OTS 接駁車領取 7 人座 (推薦 Noah/Voxy)", "加購 HEP 高速公路通行證", "貍小路商店街補齊藥妝與零食", "晚餐：湯咖哩或成吉思汗烤肉"],
+    focus: "抵達、自駕、蟹、購物",
+    timeline: [
+      { time: "15:10", label: "抵達", activity: "飛機抵達大千歲機場，辦理入境。" },
+      { time: "17:00", label: "自駕", activity: "OTS 完成領車，開往札幌市區（約 1 小時）。" },
+      { time: "18:30", label: "入住", activity: "飯店 Check-in 停好車。" },
+      { time: "19:00", label: "美食", activity: "步行至薄野區吃「帝王蟹/螃蟹料理」。推薦「冰雪之門」或「螃蟹家」。", highlight: true },
+      { time: "20:30", label: "購物", activity: "逛狸小路商店街 1~7 段，補齊藥妝與唐吉訶德雜貨。" }
+    ],
+    accommodation: "札幌 Vessel Inn 中島公園 (海鮮早餐極強)",
     photos: ["/images/day1/ots_rental.png", "/images/day1/tanukikoji.jpg", "/images/day1/soup_curry.jpg"]
   },
   {
     day: 2,
     date: "07/08 Wed.",
-    title: "小樽漫步與 Outlet 大採購",
-    spots: ["小樽運河、音樂盒堂、北一硝子館", "三井 Outlet Park 札幌北廣島 (掃貨至 20:00)", "回札幌 Vessel Inn 中島公園休息"],
+    title: "小樽海鮮市場與大採購",
+    focus: "海鮮、運河、購物",
+    timeline: [
+      { time: "09:30", label: "小樽", activity: "開車前往小樽（約 45 分鐘）。" },
+      { time: "10:30", label: "美食", activity: "直奔「小樽三角市場」享用海鮮丼與現煮帝王蟹。", highlight: true },
+      { time: "13:00", label: "漫步", activity: "逛小樽運河、音樂盒堂、北一硝子館。" },
+      { time: "15:00", label: "出發", activity: "離開小樽開往「三井 Outlet Park 札幌北廣島」。" },
+      { time: "16:00", label: "購物", activity: "在 Outlet 盡情購物至 20:00 關門。" }
+    ],
+    accommodation: "札幌 Vessel Inn 中島公園 (續住免搬行李)",
     photos: ["/images/day2/otaru_canal.jpg", "/images/day2/mitsui_outlet.png", "/images/day2/vessel_inn_park.jpg"]
   },
   {
     day: 3,
     date: "07/09 Thu.",
-    title: "旭山動物園與旭川親子時光",
-    spots: ["自駕前往旭山動物園 (約 2 小時)", "親子時間：看到企鵝、北極熊與海豹", "AEON 購物中心補貨", "入住 OMO7 旭川 (星野集團)"],
+    title: "場外市場與旭山動物園",
+    focus: "海鮮、親子、探索",
+    timeline: [
+      { time: "08:30", label: "退房", activity: "退房後前往「札幌場外市場 (Curb Market)」。" },
+      { time: "09:00", label: "美食", activity: "品嚐最新鮮的干貝、海膽、現烤海鮮。", highlight: true },
+      { time: "11:00", label: "自駕", activity: "開往旭山動物園（約 2 小時）。" },
+      { time: "13:00", label: "親子", activity: "逛旭山動物園，看北極熊、企鵝和海豹。" },
+      { time: "17:00", label: "入住", activity: "入住 OMO7 旭川 (星野集團)。" }
+    ],
+    accommodation: "OMO7 旭川 (親子友善飯店)",
     photos: ["/images/day3/asahiyama_zoo.jpg", "/images/day3/aeon_mall.png", "/images/day3/omo7_asahikawa.jpg"]
   },
   {
     day: 4,
     date: "07/10 Fri.",
     title: "美瑛與富良野：花季最高峰",
-    spots: ["四季彩之丘 (搭乘七彩遊園車)", "青池與白鬚瀑布靜謐攝影", "富田農場：欣賞滿開薰衣草", "森林精靈露台：夜晚點燈漫步", "入住新富良野王子大飯店"],
+    focus: "花海、哈密瓜、精靈露台",
+    timeline: [
+      { time: "09:00", label: "美瑛", activity: "前往「四季彩之丘」，搭乘拖拉機看七彩花毯。" },
+      { time: "11:30", label: "美食", activity: "富田哈密瓜工房：現切哈密瓜、冰淇淋吃到飽。", highlight: true },
+      { time: "13:30", label: "賞花", activity: "隔壁「富田農場」看紫色薰衣草花海。" },
+      { time: "18:00", label: "夢幻", activity: "逛「森林精靈露台」夢幻小木屋點燈。" },
+      { time: "19:30", label: "入住", activity: "入住新富良野王子大飯店。" }
+    ],
+    accommodation: "新富良野王子大飯店",
     photos: ["/images/day4/shikisai_no_oka.jpg", "/images/day4/blue_pond.jpg", "/images/day4/tomita_farm.jpg", "/images/day4/ningle_terrace.jpg"]
   },
   {
     day: 5,
     date: "07/11 Sat.",
-    title: "登別溫泉與大型水樂園",
-    spots: ["慢享早餐後開往登別 (約 2.5 小時)", "地獄谷散策與大湯沼川天然足湯", "入住第一瀧本館 (超大水樂園)", "溫泉泊：大人泡湯，小孩水池放電"],
+    title: "登別溫泉與水樂園止放電",
+    focus: "足湯、地獄谷、溫泉水樂園",
+    timeline: [
+      { time: "10:30", label: "出發", activity: "慢享早餐後開往登別（約 2.5 小時）。" },
+      { time: "14:00", label: "奇觀", activity: "逛「登別地獄谷」，看硫磺火山與大湯沼川足湯。" },
+      { time: "16:00", label: "入住", activity: "入住第一瀧本館，使用 35 種溫泉池。", highlight: true },
+      { time: "18:00", label: "放電", activity: "在室內大型水樂園玩划水道，小孩絕對超嗨。" }
+    ],
+    accommodation: "第一瀧本館 (超強親子溫泉飯店)",
     photos: ["/images/day5/noboribetsu_jigokudani.png", "/images/day5/oyunuma.jpg", "/images/day5/dai_ichi_takimotokan.jpg"]
   },
   {
     day: 6,
     date: "07/12 Sun.",
     title: "洞爺湖煙火之夜",
-    spots: ["昭和新山熊牧場餵可愛棕熊", "搭乘洞爺湖汽船巡航湖光山色", "20:45 洞爺湖花火大會 (躺在房間看)", "入住乃之風渡假飯店 (面湖房)"],
+    focus: "餵熊、汽船、湖畔煙火",
+    timeline: [
+      { time: "09:30", label: "洞爺湖", activity: "退房後開往洞爺湖（約 1 小時）。" },
+      { time: "11:00", label: "體驗", activity: "昭和新山熊牧場餵棕熊、搭乘環湖汽船。" },
+      { time: "15:00", label: "入住", activity: "入住乃之風渡假飯店，享受全湖景房。", highlight: true },
+      { time: "20:45", label: "煙火", activity: "躺在房間看洞爺湖煙火在窗外綻放。" }
+    ],
+    accommodation: "乃之風渡假飯店 (每房皆有面湖大窗)",
     photos: ["/images/day6/showa_shinzan_bear_park.jpg", "/images/day6/toyako_cruise.jpg", "/images/day6/toyako_fireworks.jpg"]
   },
   {
     day: 7,
     date: "07/13 Mon.",
     title: "機場最後巡禮與返台",
-    spots: ["OTS 千歲營業所還車 (附近加滿油)", "機場 2 樓名產甜點最後採買", "機場 3 樓哆啦 A 夢與 Hello Kitty 樂園", "機場還車與登機返台"],
+    focus: "還車、補貨、伴手禮",
+    timeline: [
+      { time: "08:45", label: "出發", activity: "準時退房，開往 OTS 千歲營業所（約 1.25 小時）。" },
+      { time: "10:00", label: "還車", activity: "附近加油站加滿油後，完成 OTS 還車。" },
+      { time: "11:00", label: "逛街", activity: "機場 2 樓買六花亭、北菓樓等螃蟹名產補貨。", highlight: true },
+      { time: "12:00", label: "親子", activity: "機場 3 樓哆啦 A 夢與 Hello Kitty 樂園。" },
+      { time: "15:00", label: "登機", activity: "辦理登機，準備帶著滿滿回憶返台。" }
+    ],
+    accommodation: "溫暖的家",
     photos: ["/images/day7/new_chitose_airport.png", "/images/day7/airport_souvenirs.jpg"]
   }
 ];
 
 function App() {
   const [selectedDay, setSelectedDay] = useState(1);
-  const [checkedItems, setCheckedItems] = useState({});
   const [weather, setWeather] = useState({ temp: '--', condition: 'Loading' });
   const [exchangeRate, setExchangeRate] = useState('--');
 
   const currentItinerary = itineraryData;
-
-  const toggleCheck = (id) => {
-    setCheckedItems(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
 
   useEffect(() => {
     // Fetch Weather (Sapporo)
@@ -142,43 +188,46 @@ function App() {
           </p>
         </div>
       </header>
-
       <main className="w-full max-w-md px-4">
-        <section className="mb-20 bg-stone-200/20 p-6 rounded-[40px] border border-white/50 backdrop-blur-sm shadow-inner">
-          <div className="space-y-12">
-            <div>
-              <h4 className="text-[10px] font-bold tracking-widest text-center text-stone-300 uppercase mb-4">Analysis Radar</h4>
-              <div className="h-[280px] flex items-center justify-center">
-                <ComparisonRadar />
-              </div>
+        <section className="mb-10 bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-[40px] border border-orange-100 shadow-sm">
+          <h4 className="flex items-center gap-2 text-orange-600 font-bold text-sm mb-4">
+            <span>🌟</span> 3 大 1 小 行程貼士 (Pro Tips)
+          </h4>
+          <div className="grid grid-cols-1 gap-4 text-xs text-stone-600 leading-relaxed font-serif-jp">
+            <div className="bg-white/60 p-3 rounded-2xl">
+              <p className="font-bold text-orange-700 mb-1">🍈 哈密瓜盛產期</p>
+              <p>7/10 前後是富良野哈密瓜最盛產的時候，路邊農場通常比超市更便宜好食。</p>
             </div>
-            <div>
-              <h4 className="text-[10px] font-bold tracking-widest text-center text-stone-300 uppercase mb-4">Bloom Forecast</h4>
-              <div className="h-[180px] flex items-center justify-center">
-                <BloomLine />
-              </div>
+            <div className="bg-white/60 p-3 rounded-2xl">
+              <p className="font-bold text-orange-700 mb-1">🦀 螃蟹/海鮮秘訣</p>
+              <p>在小樽三角市場建議挑選活蟹現煮，味道最鮮。記得提早預約札幌的螃蟹餐廳。</p>
+            </div>
+            <div className="bg-white/60 p-3 rounded-2xl">
+              <p className="font-bold text-orange-700 mb-1">🛌 房型選擇建議</p>
+              <p>預訂時註明需要「Triple Room (三床房)」或「和洋室」，3 位大人才能住得舒適。</p>
+            </div>
+            <div className="bg-white/60 p-3 rounded-2xl">
+              <p className="font-bold text-orange-700 mb-1">🎆 煙火觀賞提示</p>
+              <p>洞爺湖煙火 20:45 施放。乃之風房內觀賞最愜意，泡完溫泉換上浴衣最享受。</p>
             </div>
           </div>
         </section>
 
-        <section className="mb-10 bg-purple-50/50 p-6 rounded-[40px] border border-purple-100/50 backdrop-blur-sm shadow-sm">
+        <section className="mb-10 rental-card shadow-sm overflow-hidden">
+          <div className="absolute top-0 right-0 bg-wa-purple text-white text-[10px] px-3 py-1 font-bold rounded-bl-lg">
+            PRE-TRIP ADVICE
+          </div>
           <h4 className="flex items-center gap-2 text-wa-purple font-bold text-sm mb-4">
-            <span>💡</span> 旅程小撇步 (Travel Tips)
+            <span>🚗</span> 租車與用車建議 (Rental Tips)
           </h4>
-          <ul className="text-xs space-y-3 text-stone-600 leading-relaxed font-serif-jp">
-            <li className="flex gap-2">
-              <span className="text-purple-400">🚗</span>
-              <span><strong>OTS 租車：</strong> 建議選 7 人座 (Noah/Voxy)。3大1小+4行李+推車，一般 SUV 放不下。領車必買 <strong>HEP</strong> 全包高速路費。</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="text-purple-400">🏨</span>
-              <span><strong>住宿建議：</strong> 札幌推 Vessel Inn (早餐強)；溫泉區找 <strong>和洋室</strong> 房型，空間最大。</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="text-purple-400">🎆</span>
-              <span><strong>洞爺湖煙火：</strong> 20:45 施放。住 <strong>乃之風</strong> 面湖房可直接在陽台觀賞最佳效果。</span>
-            </li>
-          </ul>
+          <div className="space-y-4 text-xs text-stone-600 leading-relaxed font-serif-jp">
+            <p>
+              <strong>建議車型：</strong> 務必預約 <span className="text-wa-purple font-bold">7 人座</span> (如 Toyota Noah 或 Voxy)。3 大 1 小加上 4 件大行李與推車，5 人座休旅車絕對塞不下。
+            </p>
+            <p>
+              <strong>必備配件：</strong> 領車時務必加購 <span className="text-wa-purple font-bold">HEP (Hokkaido Expressway Pass)</span>，全包高速公路路費最划算。
+            </p>
+          </div>
         </section>
 
         <section id="itinerary" className="relative pt-6">
@@ -203,9 +252,9 @@ function App() {
             </div>
 
             {currentItinerary.filter(d => d.day === selectedDay).map((item) => (
-              <div key={item.day} className="wa-card p-8">
+              <div key={item.day} className="wa-card p-8 pb-0">
                 <div className="washi-tape"></div>
-                <div className="flex justify-between items-start mb-8 relative">
+                <div className="flex justify-between items-start mb-6 relative">
                   <div className="absolute -left-2 top-0 writing-vertical-rl text-xs font-serif-jp text-stone-300 tracking-widest opacity-60">
                     第{item.day}日
                   </div>
@@ -215,49 +264,57 @@ function App() {
                     <span className="text-2xl font-black">{item.day}</span>
                   </div>
                   <div className="text-right">
-                    <p className="text-[10px] font-black tracking-widest text-stone-300 uppercase mb-1">SCHEDULE</p>
-                    <p className="text-md font-serif-jp text-stone-400 font-bold">{item.date}</p>
+                    <p className="text-[10px] font-black tracking-widest text-stone-300 uppercase mb-1">LOCAL HIGHLIGHTS</p>
+                    <p className="text-xs font-medium text-purple-400 bg-purple-50 px-2 py-0.5 rounded-full inline-block">{item.focus}</p>
+                    <p className="text-sm font-serif-jp text-stone-400 mt-2">{item.date}</p>
                   </div>
                 </div>
-                <h3 className="text-2xl font-serif-jp font-bold mb-10 border-l-4 border-wa-purple/20 pl-4">{item.title}</h3>
-                <div className="flex flex-col gap-6">
+
+                <h3 className="text-2xl font-serif-jp font-bold mb-8 border-l-4 border-wa-purple/20 pl-4">{item.title}</h3>
+
+                <div className="flex flex-col gap-8 mb-8">
                   <div className="flex gap-4 overflow-x-auto pb-4 snap-x pl-2 no-scrollbar">
                     {item.photos.map((photo, pIdx) => (
                       <div key={pIdx} className="snap-center shrink-0 w-40 h-52 bg-white p-2 shadow-sm rotate-1 first:-rotate-2 last:rotate-2 border border-gray-100">
                         <div className="w-full h-40 bg-gray-100 overflow-hidden mb-2">
                           <img src={photo} alt="travel memory" className="w-full h-full object-cover" loading="lazy" />
                         </div>
-                        <div className="text-[8px] text-center font-handwriting text-stone-400">Memory {pIdx + 1}</div>
+                        <div className="text-[8px] text-center font-handwriting text-stone-400 italic">Memory Snapshot</div>
                       </div>
                     ))}
                   </div>
 
-                  {item.spots.map((spot, sIdx) => {
-                    const spotId = `${item.day}-${sIdx}`;
-                    const isChecked = checkedItems[spotId];
-                    return (
-                      <div key={sIdx}
-                        className="flex items-start gap-4 cursor-pointer group"
-                        onClick={() => toggleCheck(spotId)}
-                      >
-                        <div className={`relative w-6 h-6 shrink-0 mt-1 border-2 rounded-full flex items-center justify-center transition-colors ${isChecked ? 'border-red-400' : 'border-stone-300'}`}>
-                          {isChecked && (
-                            <span className="text-red-500 font-serif-jp font-bold text-xs stamp-animation">済</span>
-                          )}
+                  <div className="timeline-container">
+                    <div className="timeline-line"></div>
+                    {item.timeline.map((event, eIdx) => (
+                      <div key={eIdx} className={`timeline-item ${event.highlight ? 'highlight' : ''}`}>
+                        <div className="timeline-dot"></div>
+                        <div className="flex items-baseline gap-3">
+                          <span className="text-xs font-black text-stone-400 font-mono w-10 shrink-0">{event.time}</span>
+                          <span className="text-xs font-bold text-wa-purple bg-purple-50 px-2 py-0.5 rounded leading-none shrink-0">{event.label}</span>
+                          {event.highlight && <span className="highlight-badge">亮點</span>}
                         </div>
-                        <span className={`text-lg font-handwriting transition-colors leading-relaxed ${isChecked ? 'text-stone-300 line-through decoration-stone-300' : 'text-stone-600 group-hover:text-wa-purple'}`}>
-                          {spot}
-                        </span>
+                        <p className="text-sm text-stone-600 mt-2 font-handwriting leading-relaxed pl-14">
+                          {event.activity}
+                        </p>
                       </div>
-                    );
-                  })}
+                    ))}
+                  </div>
+                </div>
+
+                <div className="accommodation-note">
+                  <span className="text-xl">🏨</span>
+                  <div>
+                    <p className="text-[8px] font-bold text-stone-300 uppercase leading-none mb-1">Accommodation</p>
+                    <p className="text-xs font-bold text-stone-700 font-serif-jp">{item.accommodation}</p>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </section>
       </main>
-    </div>
+    </div >
   );
 }
 
