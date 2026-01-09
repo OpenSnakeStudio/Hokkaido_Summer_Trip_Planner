@@ -280,12 +280,13 @@ function App() {
           </div>
         </section>
 
-        <section className="mb-10 bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-[40px] border border-orange-100 shadow-sm relative overflow-hidden">
+        {/* July Seasonal Specials (Food only) */}
+        <section className="mb-6 bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-[40px] border border-orange-100 shadow-sm relative overflow-hidden">
           <div className="absolute -right-4 -top-4 w-24 h-24 bg-orange-200/20 rounded-full blur-2xl"></div>
           <h4 className="flex items-center gap-2 text-orange-600 font-bold text-sm mb-4">
             <span>🌟</span> 7月限定・旬の味 (July Specials)
           </h4>
-          <div className="grid grid-cols-2 gap-3 mb-6">
+          <div className="grid grid-cols-2 gap-3">
             <div className="glass-light p-3 rounded-2xl border border-orange-200/50 flex flex-col items-center text-center">
               <span className="text-2xl mb-1">🍈</span>
               <p className="text-[10px] font-bold text-orange-800">夕張哈密瓜</p>
@@ -297,12 +298,19 @@ function App() {
               <p className="text-[8px] text-orange-600/70">七月採收，口感極鮮</p>
             </div>
           </div>
-          <h4 className="flex items-center gap-2 text-orange-600 font-bold text-[10px] uppercase tracking-wider mb-3 opacity-60">
-            行程貼士 (Travel Tips)
+        </section>
+
+        {/* Travel Tips (Logistics only) */}
+        <section className="mb-10 bg-white/50 p-6 rounded-[40px] border border-stone-200 shadow-sm">
+          <h4 className="flex items-center gap-2 text-stone-400 font-bold text-[10px] uppercase tracking-wider mb-4">
+            旅行手帖貼士 (Travel Tips)
           </h4>
           <div className="grid grid-cols-1 gap-4 text-xs text-stone-600 leading-relaxed font-serif-jp">
-            <div className="bg-white/60 p-3 rounded-2xl">
-              <p className="font-bold text-orange-700 mb-1">🛌 房型選擇建議</p>
+            <div className="bg-white/60 p-4 rounded-2xl border border-stone-100 italic">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-base">🛌</span>
+                <p className="font-bold text-stone-700">房型選擇建議</p>
+              </div>
               <p>預訂時註明需要「Triple Room (三床房)」或「和洋室」，3 位大人才能住得舒適。</p>
             </div>
           </div>
