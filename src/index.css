@@ -10,7 +10,7 @@
   --wa-cyan: #06B6D4;
   --wa-paper: #FDF2F8;
   --wa-tape: #d1c1d7;
-  --wa-ink: #831843;
+  --wa-ink: #2d2a26;
 }
 
 @keyframes aurora {
@@ -126,7 +126,7 @@ body {
   top: 8px;
   bottom: 8px;
   width: 2px;
-  background: linear-gradient(to bottom, transparent, var(--wa-pink) 10%, var(--wa-pink) 90%, transparent);
+  background: linear-gradient(to bottom, transparent, var(--wa-purple) 10%, var(--wa-purple) 90%, transparent);
   opacity: 0.3;
 }
 
@@ -142,10 +142,10 @@ body {
   width: 12px;
   height: 12px;
   background: white;
-  border: 2px solid var(--wa-pink);
+  border: 2px solid var(--wa-purple);
   border-radius: 50%;
   z-index: 2;
-  box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.1);
+  box-shadow: 0 0 0 4px rgba(130, 106, 157, 0.1);
 }
 
 .timeline-item.highlight .timeline-dot {
