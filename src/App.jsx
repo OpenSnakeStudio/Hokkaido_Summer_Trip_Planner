@@ -12,6 +12,15 @@ import {
   Calendar
 } from 'lucide-react';
 // Deploy trigger: 2026-01-06 21:50
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return isMobile;
+};
 import { ComparisonRadar, BloomLine } from './components/JournalCharts';
 
 const itineraryData = [
@@ -147,35 +156,322 @@ const itineraryData = [
   }
 ];
 
-function App() {
-  const [selectedDay, setSelectedDay] = useState(1);
-  const [weather, setWeather] = useState({ temp: '--', condition: 'Loading' });
-  const [exchangeRate, setExchangeRate] = useState('--');
+const MobileView = ({ selectedDay, setSelectedDay, weather, exchangeRate, currentItinerary }) => {
+  return (
+    <div className="selection:bg-purple-100 min-h-screen flex flex-col items-center pb-32">
+      <nav className="w-full p-6 flex justify-between items-center max-w-4xl">
+        <div className="border-b-4 border-stone-800 pb-1">
+          <h1 className="text-base font-bold tracking-[0.4em] font-serif-jp uppercase text-stone-800">Hokkaido '26</h1>
+        </div>
+        <div className="text-[10px] font-handwriting opacity-40 tracking-widest uppercase">Travel Journal</div>
+      </nav>
 
-  const currentItinerary = itineraryData;
+      <div className="w-full max-w-md px-5 mt-4 mb-8 space-y-3">
+        <div className="info-badge shadow-sm">
+          <span>🌡️</span>
+          <span className="font-medium">即時氣溫（札幌）:</span>
+          <span className="font-bold">{weather.temp}°C</span>
+          <span className="text-[8px] bg-green-100 text-green-600 px-1 rounded font-bold">LIVE</span>
+        </div>
+        <div className="info-badge shadow-sm">
+          <span>💵</span>
+          <span className="font-medium">參考匯率:</span>
+          <span className="font-bold">1 TWD ≈ {exchangeRate} JPY</span>
+          <span className="text-[8px] bg-green-100 text-green-600 px-1 rounded font-bold">LIVE</span>
+        </div>
+        <div className="info-badge shadow-sm">
+          <span>🌸</span>
+          <span className="font-medium">花況預測:</span>
+          <span className="font-bold text-purple-600">滿開中</span>
+          <span className="text-[8px] bg-purple-100 text-purple-600 px-1 rounded font-bold">JULY</span>
+        </div>
+      </div>
 
-  useEffect(() => {
-    // Fetch Weather (Sapporo)
-    fetch('https://api.open-meteo.com/v1/forecast?latitude=43.0642&longitude=141.3468&current_weather=true')
-      .then(res => res.json())
-      .then(data => {
-        if (data.current_weather) {
-          setWeather({ temp: Math.round(data.current_weather.temperature), condition: 'Live' });
-        }
-      })
-      .catch(err => console.error('Weather error:', err));
+      <header className="relative py-20 px-6 text-center w-full overflow-hidden">
+        <div
+          className="absolute inset-0 z-0 opacity-50 pointer-events-none"
+          style={{
+            backgroundImage: `url('/hokkaido_map_watermark.png')`,
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        ></div>
 
-    // Fetch Exchange Rate (TWD -> JPY)
-    fetch('https://open.er-api.com/v6/latest/TWD')
-      .then(res => res.json())
-      .then(data => {
-        if (data.rates && data.rates.JPY) {
-          setExchangeRate(data.rates.JPY.toFixed(2));
-        }
-      })
-      .catch(err => console.error('Rate error:', err));
-  }, []);
+        <div className="relative z-10">
+          <h2 className="text-4xl font-serif-jp font-bold mb-6 text-stone-800 leading-tight">
+            北の大地・<span className="text-purple-600">旅の手帖</span>
+          </h2>
+          <p className="font-handwriting text-stone-500 text-lg leading-relaxed px-10 max-w-lg mx-auto">
+            「2026年、夏。親子自駕、煙火與購物、紫色的花畑。絕好の旅どきです！」
+          </p>
+        </div>
+      </header>
 
+      <main className="w-full max-w-md px-4">
+        <section className="mb-10 wa-card p-6 shadow-sm overflow-hidden border-dashed border-stone-200">
+          <div className="absolute top-0 right-0 bg-stone-800 text-white text-[10px] px-3 py-1 font-bold rounded-bl-lg">
+            FLIGHT LOGISTICS
+          </div>
+          <h4 className="flex items-center gap-2 text-stone-800 font-bold text-sm mb-6">
+            <span>✈️</span> 航班資訊 (Flight Details)
+          </h4>
+          <div className="space-y-6">
+            <div className="flex items-center gap-4 bg-white/40 p-3 rounded-2xl border border-white/60">
+              <div className="w-12 h-12 shrink-0 bg-white rounded-xl p-1 shadow-sm overflow-hidden flex items-center justify-center">
+                <img src="/images/airlines/starlux_logo.png" alt="Starlux" className="w-full h-full object-contain scale-110" />
+              </div>
+              <div className="flex-1">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-[10px] font-bold text-stone-400">去程 | 07/07 Tue.</span>
+                  <span className="text-[10px] font-black text-wa-purple bg-purple-50 px-2 py-0.5 rounded">JX850</span>
+                </div>
+                <div className="flex justify-between items-end">
+                  <div>
+                    <p className="text-lg font-black text-stone-700 leading-none">10:05</p>
+                    <p className="text-[8px] font-bold text-stone-400 mt-1">桃機 TPE (T1)</p>
+                  </div>
+                  <div className="flex-1 flex flex-col items-center px-4 mb-2">
+                    <div className="w-full h-[1px] bg-stone-200 relative mb-1">
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10px] text-stone-300">✈️</div>
+                    </div>
+                    <span className="text-[8px] text-stone-300 font-mono">A330-900neo</span>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-lg font-black text-stone-700 leading-none">15:10</p>
+                    <p className="text-[8px] font-bold text-stone-400 mt-1">新千歲 CTS</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 bg-white/40 p-3 rounded-2xl border border-white/60">
+              <div className="w-12 h-12 shrink-0 bg-white rounded-xl p-1 shadow-sm overflow-hidden flex items-center justify-center">
+                <img src="/images/airlines/jal_logo.png" alt="JAL" className="w-full h-full object-contain" />
+              </div>
+              <div className="flex-1">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-[10px] font-bold text-stone-400">回程 | 07/13 Mon.</span>
+                  <span className="text-[10px] font-black text-red-500 bg-red-50 px-2 py-0.5 rounded">JL508</span>
+                </div>
+                <div className="flex justify-between items-end">
+                  <div>
+                    <p className="text-lg font-black text-stone-700 leading-none">11:45</p>
+                    <p className="text-[8px] font-bold text-stone-400 mt-1">新千歲 (國內線D)</p>
+                  </div>
+                  <div className="flex-1 flex flex-col items-center px-4 mb-2">
+                    <div className="w-full h-[1px] bg-stone-200 relative mb-1">
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10px] text-stone-300 rotate-180">✈️</div>
+                    </div>
+                    <span className="text-[8px] text-stone-300 font-mono">A350 廣體機</span>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-lg font-black text-stone-700 leading-none">13:25</p>
+                    <p className="text-[8px] font-bold text-stone-400 mt-1">羽田 HND (T1)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-6 bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-[40px] border border-orange-100 shadow-sm relative overflow-hidden">
+          <div className="absolute -right-4 -top-4 w-24 h-24 bg-orange-200/20 rounded-full blur-2xl"></div>
+          <h4 className="flex items-center gap-2 text-orange-600 font-bold text-sm mb-4">
+            <span>🌟</span> 7月限定・旬の味 (July Specials)
+          </h4>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="glass-light p-3 rounded-2xl border border-orange-200/50 flex flex-col items-center text-center">
+              <span className="text-2xl mb-1">🍈</span>
+              <p className="text-[10px] font-bold text-orange-800">夕張哈密瓜</p>
+              <p className="text-[8px] text-orange-600/70">香甜多汁，夏季必嚐</p>
+            </div>
+            <div className="glass-light p-3 rounded-2xl border border-orange-200/50 flex flex-col items-center text-center">
+              <span className="text-2xl mb-1">🌽</span>
+              <p className="text-[10px] font-bold text-orange-800">北海道甜玉米</p>
+              <p className="text-[8px] text-orange-600/70">七月採收，口感極鮮</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-10 bg-white/50 p-8 rounded-[40px] border border-stone-100 shadow-sm relative overflow-hidden">
+          <h4 className="flex items-center gap-2 text-wa-purple font-bold text-sm mb-8">
+            <span>📊</span> 視覺化方案分析 (Visual Analysis)
+          </h4>
+          <div className="flex flex-col gap-12">
+            <div className="flex flex-col items-center">
+              <p className="text-[10px] font-bold text-stone-300 uppercase tracking-[0.2em] mb-8 text-center">行程平衡雷達圖 (Itinerary Radar)</p>
+              <div className="w-full max-w-[260px] relative">
+                <ComparisonRadar />
+              </div>
+
+              <div className="grid grid-cols-5 gap-0 mt-10 w-full bg-white/30 rounded-2xl p-4 border border-white/50 max-w-[260px]">
+                {['景點', '餘裕', '購物', '效率', '預算'].map((label, idx) => (
+                  <div key={label} className="text-center border-r last:border-r-0 border-stone-100">
+                    <p className="text-[10px] font-black text-stone-700 leading-none">
+                      {[95, 65, 60, 95, 85][idx]}%
+                    </p>
+                    <p className="text-[8px] text-stone-400 mt-1.5 font-bold">{label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="h-[1px] bg-gradient-to-r from-transparent via-stone-100 to-transparent w-full"></div>
+
+            <div className="flex flex-col items-center px-2">
+              <p className="text-[10px] font-bold text-stone-300 uppercase tracking-[0.2em] mb-8 text-center">七月薰衣草花況預測 (Bloom Forecast)</p>
+              <div className="w-full max-w-[260px] h-32 mb-4">
+                <BloomLine />
+              </div>
+              <p className="text-[8px] text-stone-400 text-center italic opacity-60">根據 2026 年預計花期資料生成</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-10 bg-white/50 p-6 rounded-[40px] border border-stone-200 shadow-sm">
+          <h4 className="flex items-center gap-2 text-stone-400 font-bold text-[10px] uppercase tracking-wider mb-4">
+            旅行手帖貼士 (Travel Tips)
+          </h4>
+          <div className="grid grid-cols-1 gap-4 text-xs text-stone-600 leading-relaxed font-serif-jp">
+            <div className="bg-white/60 p-4 rounded-2xl border border-stone-100 italic">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-base">🛌</span>
+                <p className="font-bold text-stone-700">房型選擇建議</p>
+              </div>
+              <p>預訂時註明需要「Triple Room (三床房)」或「和洋室」，3 位大人才能住得舒適。</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-10 rental-card shadow-sm overflow-hidden">
+          <div className="absolute top-0 right-0 bg-wa-purple text-white text-[10px] px-3 py-1 font-bold rounded-bl-lg">
+            PRE-TRIP ADVICE
+          </div>
+          <h4 className="flex items-center gap-2 text-wa-purple font-bold text-sm mb-4">
+            <span>🚗</span> 租車與用車建議 (Rental Tips)
+          </h4>
+          <div className="space-y-4 text-xs text-stone-600 leading-relaxed font-serif-jp">
+            <p>
+              <strong>建議車型：</strong> 務必預約 <span className="text-wa-purple font-bold">7 人座</span> (如 Toyota Noah 或 Voxy)。3 大 1 小加上 4 件大行李與推車，5 人座休旅車絕對塞不下。
+            </p>
+            <p>
+              <strong>必備配件：</strong> 領車時務必加購 <span className="text-wa-purple font-bold">HEP (Hokkaido Expressway Pass)</span>，全包高速公路路費最划算。
+            </p>
+          </div>
+        </section>
+
+        <section id="itinerary" className="relative pt-6">
+          <div className="flex flex-col gap-8">
+            <div className="flex overflow-x-auto gap-3 pb-6 pt-4 no-scrollbar -mx-4 px-6 snap-x snap-mandatory scroll-smooth">
+              {currentItinerary.map((item) => (
+                <button
+                  key={item.day}
+                  onClick={() => setSelectedDay(item.day)}
+                  className={`snap-center shrink-0 flex flex-col items-center justify-center w-[84px] h-[100px] rounded-[32px] border-2 transition-all duration-300 ${selectedDay === item.day
+                    ? 'bg-wa-purple text-white border-wa-purple shadow-lg scale-105'
+                    : 'bg-white/50 text-stone-400 border-white/80 hover:bg-white/80'
+                    }`}
+                >
+                  <span className={`text-[10px] font-bold ${selectedDay === item.day ? 'opacity-90' : 'opacity-40'}`}>DAY</span>
+                  <span className="text-2xl font-black">{item.day}</span>
+                  <span className={`text-[8px] font-bold mt-1 ${selectedDay === item.day ? 'opacity-90' : 'opacity-50'}`}>
+                    {item.date.split(' ')[0]}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {currentItinerary.filter(d => d.day === selectedDay).map((item) => (
+              <div key={item.day} className="wa-card p-8 pb-0">
+                <div className="washi-tape flex items-center justify-around px-2 text-[10px] select-none">
+                  <span>🪻</span>
+                  <span>🍈</span>
+                  <span>🪻</span>
+                </div>
+                <div className="flex justify-between items-start mb-6 relative">
+                  <div className="absolute -left-2 top-0 writing-vertical-rl text-xs font-serif-jp text-stone-300 tracking-widest opacity-60">
+                    第{item.day}日
+                  </div>
+
+                  <div className="w-16 h-16 rounded-full border border-white/50 backdrop-blur-md flex flex-col items-center justify-center text-wa-purple bg-white/30 shadow-sm -rotate-6 ml-6">
+                    <span className="text-[10px] opacity-40 font-bold">DAY</span>
+                    <span className="text-2xl font-black">{item.day}</span>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[10px] font-black tracking-widest text-stone-300 uppercase mb-1">LOCAL HIGHLIGHTS</p>
+                    <p className="text-xs font-medium text-purple-400 bg-purple-50 px-2 py-0.5 rounded-full inline-block">{item.focus}</p>
+                    <p className="text-sm font-serif-jp text-stone-400 mt-2">{item.date}</p>
+                  </div>
+                </div>
+
+                <h3 className="text-2xl font-serif-jp font-bold mb-8 border-l-4 border-wa-purple/20 pl-4">{item.title}</h3>
+
+                <div className="flex flex-col gap-8 mb-8">
+                  <div className="flex gap-4 overflow-x-auto pb-4 snap-x pl-2 no-scrollbar">
+                    {item.photos.map((photo, pIdx) => (
+                      <div key={pIdx} className="snap-center shrink-0 w-40 h-52 bg-white p-2 shadow-sm rotate-1 first:-rotate-2 last:rotate-2 border border-gray-100">
+                        <div className="w-full h-40 bg-gray-100 overflow-hidden mb-2">
+                          <img src={photo} alt="travel memory" className="w-full h-full object-cover" loading="lazy" />
+                        </div>
+                        <div className="text-[8px] text-center font-handwriting text-stone-400 italic">Memory Snapshot</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 mb-8">
+                    <h5 className="text-[10px] font-bold text-purple-400 uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
+                      <span className="w-4 h-[1px] bg-purple-200"></span>
+                      夏の絶品グルメ & スポット
+                    </h5>
+                    <div className="grid grid-cols-1 gap-3">
+                      {item.recommendations.map((rec, rIdx) => (
+                        <div key={rIdx} className="glass-light p-3 rounded-2xl border border-white flex items-center gap-3">
+                          <span className="text-lg">{rec.type === 'food' ? '🍲' : '📍'}</span>
+                          <div>
+                            <p className="text-xs font-bold text-stone-700">{rec.title}</p>
+                            <p className="text-[10px] text-stone-400">{rec.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="timeline-container">
+                    <div className="timeline-line"></div>
+                    {item.timeline.map((event, eIdx) => (
+                      <div key={eIdx} className={`timeline-item ${event.highlight ? 'highlight' : ''}`}>
+                        <div className="timeline-dot"></div>
+                        <div className="flex items-baseline gap-3">
+                          <span className="text-xs font-black text-stone-400 font-mono w-10 shrink-0">{event.time}</span>
+                          <span className="text-xs font-bold text-wa-purple bg-purple-50 px-2 py-0.5 rounded leading-none shrink-0">{event.label}</span>
+                          {event.highlight && <span className="highlight-badge">亮點</span>}
+                        </div>
+                        <p className="text-sm text-stone-600 mt-2 font-handwriting leading-relaxed pl-14">
+                          {event.activity}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="accommodation-note">
+                  <span className="text-xl">🏨</span>
+                  <div>
+                    <p className="text-[8px] font-bold text-stone-300 uppercase leading-none mb-1">Accommodation</p>
+                    <p className="text-xs font-bold text-stone-700 font-serif-jp">{item.accommodation}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+    </div >
+  );
+};
+
+const MagazineView = ({ selectedDay, setSelectedDay, weather, exchangeRate, currentItinerary }) => {
   return (
     <div className="min-h-screen bg-transparent selection:bg-pink-100 flex flex-col lg:flex-row font-sans-editorial text-wa-ink">
       {/* 1. PC SIDEBAR (Desktop Only) */}
@@ -238,167 +534,6 @@ function App() {
           </div>
         </nav>
 
-        {/* --- MOBILE ONLY: ORIGINAL SECTIONS (RESTORED FROM f486801) --- */}
-        <div className="w-full max-w-lg mx-auto px-4 pt-12 pb-32 flex flex-col md:hidden text-wa-ink">
-          <section className="text-center relative py-6 mb-12">
-            <div className="flex justify-center mb-6">
-              <div className="p-4 bg-white/40 backdrop-blur-xl rounded-[2.5rem] border border-white/60 shadow-2xl">
-                <Sparkles className="w-10 h-10 text-wa-purple" />
-              </div>
-            </div>
-            <h1 className="text-4xl font-serif-jp font-black mb-2">北海道 夏日親子自駕</h1>
-            <p className="text-sm font-handwriting text-stone-500 italic">2026年、夏。和家人一起的北國冒險。</p>
-            <div className="mt-8 flex justify-center gap-3">
-              <div className="bg-white/40 px-4 py-2 rounded-full border border-white/60 flex items-center gap-2 shadow-sm">
-                <Clock className="w-4 h-4 text-wa-purple" />
-                <p className="text-xs font-black">{weather.temp}°C</p>
-              </div>
-              <div className="bg-white/40 px-4 py-2 rounded-full border border-white/60 flex items-center gap-2 shadow-sm">
-                <Info className="w-4 h-4 text-wa-cyan" />
-                <p className="text-xs font-black">1:{exchangeRate} JPY</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="mb-10 bg-white/40 p-6 rounded-[2.5rem] border border-white/60 shadow-sm relative overflow-hidden">
-            <h4 className="flex items-center gap-2 text-stone-400 font-bold text-[10px] uppercase tracking-wider mb-4">
-              旅行手帖貼士 (Travel Tips)
-            </h4>
-            <div className="grid grid-cols-1 gap-4 text-xs text-stone-600 leading-relaxed font-serif-jp">
-              <div className="bg-white/60 p-4 rounded-2xl border border-stone-100 italic">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-base">🛌</span>
-                  <p className="font-bold text-stone-700">房型選擇建議</p>
-                </div>
-                <p>預訂時註明需要「Triple Room (三床房)」或「和洋室」，3 位大人才能住得舒適。</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="mb-10 rental-card shadow-sm overflow-hidden border-wa-purple/20">
-            <div className="absolute top-0 right-0 bg-wa-purple text-white text-[10px] px-3 py-1 font-bold rounded-bl-lg">
-              PRE-TRIP ADVICE
-            </div>
-            <h4 className="flex items-center gap-2 text-wa-purple font-bold text-sm mb-4">
-              <span>🚗</span> 租車與用車建議 (Rental Tips)
-            </h4>
-            <div className="space-y-4 text-xs text-stone-600 leading-relaxed font-serif-jp">
-              <p>
-                <strong>建議車型：</strong> 務必預約 <span className="text-wa-purple font-bold">7 人座</span> (如 Toyota Noah 或 Voxy)。3 大 1 小加上 4 件大行李與推車，5 人座休旅車絕對塞不下。
-              </p>
-              <p>
-                <strong>必備配件：</strong> 領車時務必加購 <span className="text-wa-purple font-bold">HEP (Hokkaido Expressway Pass)</span>，全包高速公路路費最划算。
-              </p>
-            </div>
-          </section>
-
-          <section id="itinerary" className="relative pt-6">
-            <div className="flex flex-col gap-8">
-              <div className="flex overflow-x-auto gap-3 pb-6 pt-4 no-scrollbar -mx-4 px-6 snap-x snap-mandatory scroll-smooth">
-                {currentItinerary.map((item) => (
-                  <button
-                    key={item.day}
-                    onClick={() => setSelectedDay(item.day)}
-                    className={`snap-center shrink-0 flex flex-col items-center justify-center w-[84px] h-[100px] rounded-[32px] border-2 transition-all duration-300 ${selectedDay === item.day
-                      ? 'bg-wa-purple text-white border-wa-purple shadow-lg scale-105'
-                      : 'bg-white/50 text-stone-400 border-white/80 hover:bg-white/80'
-                      }`}
-                  >
-                    <span className={`text-[10px] font-bold ${selectedDay === item.day ? 'opacity-90' : 'opacity-40'}`}>DAY</span>
-                    <span className="text-2xl font-black">{item.day}</span>
-                    <span className={`text-[8px] font-bold mt-1 ${selectedDay === item.day ? 'opacity-90' : 'opacity-50'}`}>
-                      {item.date.split(' ')[0]}
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-              {currentItinerary.filter(d => d.day === selectedDay).map((item) => (
-                <div key={item.day} className="wa-card p-8 pb-0 border-white/80 bg-white/40">
-                  <div className="washi-tape flex items-center justify-around px-2 text-[10px] select-none bg-wa-tape">
-                    <span>🪻</span>
-                    <span>🍈</span>
-                    <span>🪻</span>
-                  </div>
-                  <div className="flex justify-between items-start mb-6 relative">
-                    <div className="absolute -left-2 top-0 writing-vertical-rl text-xs font-serif-jp text-stone-300 tracking-widest opacity-60">
-                      第{item.day}日
-                    </div>
-
-                    <div className="w-16 h-16 rounded-full border border-white/50 backdrop-blur-md flex flex-col items-center justify-center text-wa-purple bg-white/30 shadow-sm -rotate-6 ml-6">
-                      <span className="text-[10px] opacity-40 font-bold">DAY</span>
-                      <span className="text-2xl font-black">{item.day}</span>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-[10px] font-black tracking-widest text-stone-300 uppercase mb-1">LOCAL HIGHLIGHTS</p>
-                      <p className="text-xs font-medium text-purple-400 bg-purple-50 px-2 py-0.5 rounded-full inline-block">{item.focus}</p>
-                      <p className="text-sm font-serif-jp text-stone-400 mt-2">{item.date}</p>
-                    </div>
-                  </div>
-
-                  <h3 className="text-2xl font-serif-jp font-bold mb-8 border-l-4 border-wa-purple/20 pl-4 text-wa-ink">{item.title}</h3>
-
-                  <div className="flex flex-col gap-8 mb-8">
-                    <div className="flex gap-4 overflow-x-auto pb-4 snap-x pl-2 no-scrollbar">
-                      {item.photos.map((photo, pIdx) => (
-                        <div key={pIdx} className="snap-center shrink-0 w-40 h-52 bg-white p-2 shadow-sm rotate-1 first:-rotate-2 last:rotate-2 border border-gray-100">
-                          <div className="w-full h-40 bg-gray-100 overflow-hidden mb-2">
-                            <img src={photo} alt="travel memory" className="w-full h-full object-cover" loading="lazy" />
-                          </div>
-                          <div className="text-[8px] text-center font-handwriting text-stone-400 italic">Memory Snapshot</div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="mt-4 mb-8">
-                      <h5 className="text-[10px] font-bold text-purple-400 uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
-                        <span className="w-4 h-[1px] bg-purple-200"></span>
-                        夏の絶品グルメ & スポット
-                      </h5>
-                      <div className="grid grid-cols-1 gap-3">
-                        {item.recommendations.map((rec, rIdx) => (
-                          <div key={rIdx} className="bg-white/60 p-3 rounded-2xl border border-white flex items-center gap-3">
-                            <span className="text-lg">{rec.type === 'food' ? '🍲' : '📍'}</span>
-                            <div>
-                              <p className="text-xs font-bold text-stone-700">{rec.title}</p>
-                              <p className="text-[10px] text-stone-400">{rec.desc}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="timeline-container">
-                      <div className="timeline-line bg-wa-purple/20"></div>
-                      {item.timeline.map((event, eIdx) => (
-                        <div key={eIdx} className={`timeline-item ${event.highlight ? 'highlight' : ''}`}>
-                          <div className={`timeline-dot border-wa-purple ${event.highlight ? 'bg-wa-cyan border-wa-cyan' : ''}`}></div>
-                          <div className="flex items-baseline gap-3">
-                            <span className="text-xs font-black text-stone-400 font-mono w-10 shrink-0">{event.time}</span>
-                            <span className="text-xs font-bold text-wa-purple bg-purple-50 px-2 py-0.5 rounded leading-none shrink-0">{event.label}</span>
-                            {event.highlight && <span className="highlight-badge text-wa-cyan bg-cyan-50">亮點</span>}
-                          </div>
-                          <p className="text-sm text-stone-600 mt-2 font-handwriting leading-relaxed pl-14">
-                            {event.activity}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="accommodation-note border-t border-stone-100">
-                    <span className="text-xl">🏨</span>
-                    <div>
-                      <p className="text-[8px] font-bold text-stone-300 uppercase leading-none mb-1">Accommodation</p>
-                      <p className="text-xs font-bold text-stone-700 font-serif-jp">{item.accommodation}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
-
         {/* --- TABLET/PC ONLY: MAGAZINE SECTIONS --- */}
         <div className="hidden md:block w-full max-w-[1400px] px-8 pb-32">
           {/* Cover Section (Magazine Spread Style) */}
@@ -421,7 +556,6 @@ function App() {
                 </div>
               </div>
               <div className="col-span-12 lg:col-span-3 flex flex-col justify-end gap-10 pb-6 lg:pl-4">
-                {/* [NEW] PC Logistics & Flight Log */}
                 <div className="bg-wa-ink/5 p-8 rounded-[2.5rem] border border-wa-ink/5 relative overflow-hidden group">
                   <div className="absolute top-0 right-0 bg-wa-ink text-white text-[8px] px-3 py-1 font-black uppercase tracking-widest">Logistics</div>
                   <h4 className="text-[10px] font-black text-wa-pink uppercase tracking-widest mb-6">Flight Status</h4>
@@ -572,6 +706,41 @@ function App() {
       </main>
     </div>
   );
+};
+
+function App() {
+  const [selectedDay, setSelectedDay] = useState(1);
+  const [weather, setWeather] = useState({ temp: '--', condition: 'Loading' });
+  const [exchangeRate, setExchangeRate] = useState('--');
+  const isMobile = useIsMobile();
+
+  const currentItinerary = itineraryData;
+
+  useEffect(() => {
+    // Fetch Weather (Sapporo)
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=43.0642&longitude=141.3468&current_weather=true')
+      .then(res => res.json())
+      .then(data => {
+        if (data.current_weather) {
+          setWeather({ temp: Math.round(data.current_weather.temperature), condition: 'Live' });
+        }
+      })
+      .catch(err => console.error('Weather error:', err));
+
+    // Fetch Exchange Rate (TWD -> JPY)
+    fetch('https://open.er-api.com/v6/latest/TWD')
+      .then(res => res.json())
+      .then(data => {
+        if (data.rates && data.rates.JPY) {
+          setExchangeRate(data.rates.JPY.toFixed(2));
+        }
+      })
+      .catch(err => console.error('Rate error:', err));
+  }, []);
+
+  const props = { selectedDay, setSelectedDay, weather, exchangeRate, currentItinerary };
+
+  return isMobile ? <MobileView {...props} /> : <MagazineView {...props} />;
 }
 
 export default App;
