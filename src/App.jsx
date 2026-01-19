@@ -491,15 +491,15 @@ const MagazineView = ({ selectedDay, setSelectedDay, weather, exchangeRate, curr
             <button
               key={item.day}
               onClick={() => setSelectedDay(item.day)}
-              className={`flex items-baseline gap-4 py-3 px-2 rounded-xl transition-all duration-500 group border-l-2 ${selectedDay === item.day
-                ? 'border-wa-pink text-wa-ink translate-x-1'
-                : 'border-transparent text-gray-400 hover:text-wa-pink hover:translate-x-1'
+              className={`flex items-baseline gap-4 py-3.5 px-3 rounded-2xl transition-all duration-500 group border-l-4 ${selectedDay === item.day
+                ? 'border-wa-pink bg-white/40 shadow-xl shadow-wa-pink/5 text-wa-ink translate-x-1'
+                : 'border-transparent text-gray-400 hover:text-wa-pink hover:bg-white/20 hover:translate-x-1'
                 }`}
             >
-              <span className="text-xl font-black italic opacity-20 group-hover:opacity-100 transition-opacity">0{item.day}</span>
+              <span className={`text-xl font-black italic transition-opacity ${selectedDay === item.day ? 'opacity-100' : 'opacity-20 group-hover:opacity-100'}`}>0{item.day}</span>
               <div className="text-left">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em]">{item.date.split(' ')[0]}</p>
-                <p className={`text-xs font-bold leading-none mt-1 ${selectedDay === item.day ? 'text-wa-ink' : 'text-gray-400'}`}>{item.title.split(' ')[0]}</p>
+                <p className="legible-caps opacity-40">{item.date.split(' ')[0]}</p>
+                <p className={`text-sm font-black leading-none mt-1 transition-colors ${selectedDay === item.day ? 'text-wa-ink' : 'text-gray-400 group-hover:text-wa-ink'}`}>{item.title.split(' ')[0]}</p>
               </div>
             </button>
           ))}
@@ -556,9 +556,9 @@ const MagazineView = ({ selectedDay, setSelectedDay, weather, exchangeRate, curr
                 </div>
               </div>
               <div className="col-span-12 lg:col-span-3 flex flex-col justify-end gap-10 pb-6 lg:pl-4">
-                <div className="bg-wa-ink/5 p-8 rounded-[2.5rem] border border-wa-ink/5 relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 bg-wa-ink text-white text-[8px] px-3 py-1 font-black uppercase tracking-widest">Logistics</div>
-                  <h4 className="text-[10px] font-black text-wa-pink uppercase tracking-widest mb-6">Flight Status</h4>
+                <div className="glass-magazine p-10 rounded-[2.5rem] border-white/80 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 bg-wa-ink text-white legible-caps !opacity-100 px-4 py-1.5 tracking-tighter">Logistics</div>
+                  <h4 className="legible-caps text-wa-pink mb-8">Flight Status</h4>
                   <div className="space-y-6">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 bg-white rounded-xl p-1 shadow-sm flex items-center justify-center">
@@ -668,13 +668,13 @@ const MagazineView = ({ selectedDay, setSelectedDay, weather, exchangeRate, curr
                   <h4 className="editorial-title text-sm text-wa-ink tracking-[0.2em] pl-4">LOCAL PICKS</h4>
                   <div className="space-y-4">
                     {item.recommendations.map((rec, rIdx) => (
-                      <div key={rIdx} className="bg-wa-ink/5 p-6 rounded-3xl border border-wa-ink/5 flex items-start gap-5 hover:bg-wa-ink/10 transition-all cursor-pointer group">
-                        <div className={`p-3 rounded-2xl ${rec.type === 'food' ? 'bg-orange-100/50 text-orange-500' : 'bg-cyan-100/50 text-cyan-500'}`}>
+                      <div key={rIdx} className="glass-magazine p-6 rounded-3xl border-white/60 flex items-start gap-5 hover:bg-white/80 transition-all cursor-pointer group">
+                        <div className={`p-4 rounded-2xl ${rec.type === 'food' ? 'bg-orange-100/50 text-orange-500' : 'bg-cyan-100/50 text-cyan-500'}`}>
                           {rec.type === 'food' ? <Utensils className="w-6 h-6" /> : <MapPin className="w-6 h-6" />}
                         </div>
                         <div className="flex-1">
                           <p className="text-sm font-black text-wa-ink group-hover:text-wa-pink transition-colors">{rec.title}</p>
-                          <p className="text-[10px] text-wa-ink/50 mt-1 leading-relaxed line-clamp-2">{rec.desc}</p>
+                          <p className="text-[10px] text-wa-ink/60 mt-2 leading-relaxed line-clamp-2">{rec.desc}</p>
                         </div>
                       </div>
                     ))}
@@ -682,10 +682,12 @@ const MagazineView = ({ selectedDay, setSelectedDay, weather, exchangeRate, curr
                 </div>
 
                 {/* Logistics Info (Quick view) */}
-                <div className="bg-gradient-to-br from-wa-cyan to-cyan-600 p-8 rounded-[2.5rem] text-white shadow-2xl">
-                  <Car className="w-8 h-8 mb-4 opacity-50" />
-                  <h5 className="text-[10px] font-black uppercase tracking-widest mb-2">Transport Advice</h5>
-                  <p className="text-xs leading-relaxed opacity-90 font-serif-jp italic">"這段路程約 2.5 小時，沿路景觀優美。建議在休息站稍作停留，品嚐當地哈密瓜。"</p>
+                <div className="bg-gradient-to-br from-wa-cyan/90 to-cyan-600 p-8 rounded-[2.5rem] text-white shadow-2xl shadow-wa-cyan/20 border border-white/20">
+                  <Car className="w-8 h-8 mb-5 opacity-80" />
+                  <h5 className="legible-caps !text-white !opacity-60 mb-3">Transport Advice</h5>
+                  <p className="text-sm md:text-base leading-relaxed font-serif-jp tracking-tight">
+                    "這段路程約 2.5 小時，沿路景觀優美。建議在休息站稍作停留，品嚐當地哈密瓜。"
+                  </p>
                 </div>
               </div>
             </div>
